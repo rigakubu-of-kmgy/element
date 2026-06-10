@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タイトル</title>
+    <style>
+    </style>
+</head>
+<body>
+    <h1>元素診断</h1>
+    <a>Q1. あまり仲良くない友達でも遊びに誘われたら行く<br></a>
+    <button type="button" onclick="yes1()">はい</button>or<button type="button" onclick="no1()">いいえ</button>
+
+    <a><br>Q2. どのような場面においても比較的冷静でいられる<br></a>
+    <button type="button" onclick="yes2()">はい</button>or<button type="button" onclick="no2()">いいえ</button>
+
+    <a><br>Q3. 友達はどちらかというと多いほうである<br></a>
+    <button type="button" onclick="yes3()">はい</button>or<button type="button" onclick="no3()">いいえ</button>
+
+    <a><br>Q4. 一人でいても充実していると感じられる<br></a>
+    <button type="button" onclick="yes4()">はい</button>or<button type="button" onclick="no4()">いいえ</button>
+
+    <a><br>Q5. 意見がよく変わる<br></a>
+    <button type="button" onclick="yes5()">はい</button>or<button type="button" onclick="no5()">いいえ</button>
+
+    <a><br>Q6. 不満をためてしまうことがある<br></a>
+    <button type="button" onclick="yes6()">はい</button>or<button type="button" onclick="no6()">いいえ</button>
+    
+    <p id="result1">null</p>
+    <p id="result2">null</p>
+    <p id="result3">null</p>
+    <p id="result4">null</p>
+    <p id="result5">null</p>
+    <p id="result6">null</p>
+<script>
+let count1 = 0;
+let count2 = 0;
+let count3 = 0;
+let count4 = 0;
+let count5 = 0;
+let count6 = 0;
+
+
+function yes1() { count1 = 1; document.getElementById("result1").textContent = count1; }
+function no1() { count1 = 0; document.getElementById("result1").textContent = count1; }
+
+function yes2() { count2 = 1; document.getElementById("result2").textContent = count2; }
+function no2() { count2 = 0; document.getElementById("result2").textContent = count2; }
+
+function yes3() { count3 = 1; document.getElementById("result3").textContent = count3; }
+function no3() { count3 = 0; document.getElementById("result3").textContent = count3; }
+
+function yes4() { count4 = 1; document.getElementById("result4").textContent = count4; }
+function no4() { count4 = 0; document.getElementById("result4").textContent = count4; }
+
+function yes5() { count5 = 1; document.getElementById("result5").textContent = count5; }
+function no5() { count5 = 0; document.getElementById("result5").textContent = count5; }
+
+function yes6() { count6 = 1; document.getElementById("result6").textContent = count6; }
+function no6() { count6 = 0; document.getElementById("result6").textContent = count6; }
+</script>
+</body>
+</html>
