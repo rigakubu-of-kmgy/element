@@ -1,3 +1,4 @@
+<!-- ゴミコードってバカにしないで！ -->
 <!DOCTYPE HTML>
 <html lang="ja">
 <head>
@@ -9,27 +10,27 @@
 <body>
     <h1>元素診断</h1>
     <h3>貴方によく似た元素を診断します</h3>
-    <a>Q1. 気分屋だ<br></a>
+    <a>Q1. 気分屋だ(三態)<br></a>
     <button type="button" onclick="Hyes1()">凄くそう思う</button> <button type="button" onclick="Lyes1()">そう思う　　</button>
     <button type="button" onclick="idk1()">わからない　</button>
     <button type="button" onclick="Lno1()">そう思わない</button> <button type="button" onclick="Hno1()">全く思わない</button>
 
-    <a><br><br>Q2. 周りに流されやすい<br></a>
+    <a><br><br>Q2. 周りに流されやすい(硬度)<br></a>
     <button type="button" onclick="Hyes2()">凄くそう思う</button> <button type="button" onclick="Lyes2()">そう思う　　</button>
     <button type="button" onclick="idk2()">わからない　</button>
     <button type="button" onclick="Lno2()">そう思わない</button> <button type="button" onclick="Hno2()">全く思わない</button>
 
-    <a><br><br>Q3. 自分は珍しい人間だ<br></a>
+    <a><br><br>Q3. 自分は珍しい人間だ(稀少度)<br></a>
     <button type="button" onclick="Hyes3()">凄くそう思う</button> <button type="button" onclick="Lyes3()">そう思う　　</button>
     <button type="button" onclick="idk3()">わからない　</button>
     <button type="button" onclick="Lno3()">そう思わない</button> <button type="button" onclick="Hno3()">全く思わない</button>
 
-    <a><br><br>Q4. 貯金は得意だ<br></a>
+    <a><br><br>Q4. 貯金は得意だ(価値)<br></a>
     <button type="button" onclick="Hyes4()">凄くそう思う</button> <button type="button" onclick="Lyes4()">そう思う　　</button>
     <button type="button" onclick="idk4()">わからない　</button>
     <button type="button" onclick="Lno4()">そう思わない</button> <button type="button" onclick="Hno4()">全く思わない</button>
 
-    <a><br><br>Q5. メンタルは強いほうだ<br></a>
+    <a><br><br>Q5. メンタルは強いほうだ(イオン化傾向)<br></a>
     <button type="button" onclick="Hyes5()">凄くそう思う</button> <button type="button" onclick="Lyes5()">そう思う　　</button>
     <button type="button" onclick="idk5()">わからない　</button>
     <button type="button" onclick="Lno5()">そう思わない</button> <button type="button" onclick="Hno5()">全く思わない</button>
@@ -37,7 +38,10 @@
     <br><br>
     <button type="button" onclick="sindan()">診断</button>
 
-    <p id="cache">null</p>
+    <p id="cache"></p>
+    <p id="cache0"></p>
+    <!-- <p id="cache1">null</p>
+    <p id="cache2">null</p> -->
 
 <script>
 let count1 = 0;
@@ -52,7 +56,27 @@ let x = 3;
 let y = 2;
 let z = 1;
 
-data = {}
+const data = [
+    [5, 5, 5, 1, 4, 'H', '1', '水素', '水素の説明'],
+    [1, 2, 2, 2, 5, 'C', '6', '炭素', '炭素の説明'],
+    [5, 5, 5, 1, 5, 'N', '7', '窒素', '窒素の説明'],
+    [5, 5, 4, 1, 5, 'O', '8', '酸素', '酸素の説明'],
+
+    [5, 5, 2, 2, 1, 'F', '9', 'フッ素', 'フッ素の説明'],
+    [2, 2, 2, 2, 1, 'Na', '11', 'ナトリウム', 'ナトリウムの説明'],
+    [2, 1, 4, 1, 2, 'Al', '13', 'アルミニウム', 'アルミニウムの説明'],
+    [2, 2, 5, 1, 5, 'P', '15', 'リン', 'リンの説明'],
+
+    [3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
+    [1, 2, 4, 2, 1, 'Ca', '20', 'カルシウム', 'カルシウムの説明'],
+    [1, 1, 5, 4, 2, 'Fe', '26', '鉄', '鉄の説明'],
+    [1, 1, 1, 1, 4, 'Cu', '29', '銅', '銅の説明'],
+
+    [1, 2, 2, 4, 4, 'Ag', '47', '銀', '銀の説明'],
+    [1, 1, 1, 4, 4, 'Pt', '78', '白金', '白金の説明'],
+    [1, 4, 1, 5, 4, 'Au', '79', '金', '金の説明'],
+    [4, 4, 1, 2, 4, 'Hg', '80', '水銀', '水銀の説明'],
+];
 
 function Hyes1() { count1 = v; document.getElementById("result1").textContent = count1; }
 function Lyes1() { count1 = w; document.getElementById("result1").textContent = count1; }
@@ -85,9 +109,28 @@ function Lno5()  { count5 = y; document.getElementById("result5").textContent = 
 function Hno5()  { count5 = z; document.getElementById("result5").textContent = count5; }
 
 function sindan() { 
-    kekka = ` ${count1} , ${count2} , ${count3} , ${count4} , ${count5} ` ;
-    document.getElementById("cache").textContent = kekka;
+    let sum = 0;
+    let sums = [];
+    for (let dt of data) {
+        sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2 + (dt[3] - count4)**2 + (dt[4] - count5)**2
+        sums.push(sum)
+    };
+    // document.getElementById("cache1").textContent = `${count1}, ${count2}, ${count3}, ${count4}, ${count5}`;
+    // document.getElementById("cache2").textContent = sums;
+
+    const getMin = (a, b) => Math.min(a, b);
+    const min = sums.reduce(getMin);
+    let ans = 0
+
+    for (let i = 0; i < 16; i++) {
+        if ( sums[i] === min ) {
+            ans = i
+        }
+    }
+    document.getElementById("cache").textContent = `原子番号${data[ans][6]}, 元素記号${data[ans][5]}, ${data[ans][7]}`;
+    document.getElementById("cache0").textContent = `${data[ans][8]}`;
 }
+
 </script>
 </body>
 </html>
