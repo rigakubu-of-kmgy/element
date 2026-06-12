@@ -33,12 +33,15 @@
     <button type="button" onclick="Hyes6()">凄くそう思う</button> <button type="button" onclick="Lyes6()">そう思う　　</button>
     <button type="button" onclick="Lno6()">そう思わない</button> <button type="button" onclick="Hno6()">全く思わない</button>
     
-    <p id="result1">null</p>
-    <p id="result2">null</p>
+    <br><br>
+    <button type="button" onclick="sindan()">診断</button>
+
+    <p id="cache">null</p>
+    <!-- <p id="result2">null</p>
     <p id="result3">null</p>
     <p id="result4">null</p>
     <p id="result5">null</p>
-    <p id="result6">null</p>
+    <p id="result6">null</p> -->
 <script>
 let count1 = 0;
 let count2 = 0;
@@ -51,6 +54,8 @@ let w = 4;
 let x = 3;
 let y = 2;
 let z = 1;
+
+data = {}
 
 function Hyes1() { count1 = w; document.getElementById("result1").textContent = count1; }
 function Lyes1() { count1 = x; document.getElementById("result1").textContent = count1; }
@@ -81,6 +86,11 @@ function Hyes6() { count6 = w; document.getElementById("result6").textContent = 
 function Lyes6() { count6 = x; document.getElementById("result6").textContent = count6; }
 function Lno6()  { count6 = y; document.getElementById("result6").textContent = count6; }
 function Hno6()  { count6 = z; document.getElementById("result6").textContent = count6; }
+
+function sindan() { 
+    kekka = `${count1} , ${count2} , ${count3} , ${count4} , ${count5} , ${count6}` ;
+    document.getElementById("cache").textContent = kekka;
+}
 </script>
 </body>
 </html>
