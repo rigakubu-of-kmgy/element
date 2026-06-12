@@ -10,22 +10,28 @@
     <h1>元素診断</h1>
     <h3>貴方によく似た元素を診断します</h3>
     <a>Q1. あまり仲良くない友達でも遊びに誘われたら行く<br></a>
-    <button type="button" onclick="yes1()">はい</button> or <button type="button" onclick="no1()">いいえ</button>
+    <button type="button" onclick="Hyes1()">凄くそう思う</button> <button type="button" onclick="Lyes1()">そう思う　　</button>
+    <button type="button" onclick="Lno1()">そう思わない</button> <button type="button" onclick="Hno1()">全く思わない</button>
 
     <a><br><br>Q2. どのような場面においても比較的冷静でいられる<br></a>
-    <button type="button" onclick="yes2()">はい</button> or <button type="button" onclick="no2()">いいえ</button>
+    <button type="button" onclick="Hyes2()">凄くそう思う</button> <button type="button" onclick="Lyes2()">そう思う　　</button>
+    <button type="button" onclick="Lno2()">そう思わない</button> <button type="button" onclick="Hno2()">全く思わない</button>
 
     <a><br><br>Q3. 友達はどちらかというと多いほうである<br></a>
-    <button type="button" onclick="yes3()">はい</button> or <button type="button" onclick="no3()">いいえ</button>
+    <button type="button" onclick="Hyes3()">凄くそう思う</button> <button type="button" onclick="Lyes3()">そう思う　　</button>
+    <button type="button" onclick="Lno3()">そう思わない</button> <button type="button" onclick="Hno3()">全く思わない</button>
 
     <a><br><br>Q4. 一人でいても充実していると感じられる<br></a>
-    <button type="button" onclick="yes4()">はい</button> or <button type="button" onclick="no4()">いいえ</button>
+    <button type="button" onclick="Hyes4()">凄くそう思う</button> <button type="button" onclick="Lyes4()">そう思う　　</button>
+    <button type="button" onclick="Lno4()">そう思わない</button> <button type="button" onclick="Hno4()">全く思わない</button>
 
     <a><br><br>Q5. 意見がよく変わる<br></a>
-    <button type="button" onclick="yes5()">はい</button> or <button type="button" onclick="no5()">いいえ</button>
+    <button type="button" onclick="Hyes5()">凄くそう思う</button> <button type="button" onclick="Lyes5()">そう思う　　</button>
+    <button type="button" onclick="Lno5()">そう思わない</button> <button type="button" onclick="Hno5()">全く思わない</button>
 
     <a><br><br>Q6. 不満をためてしまうことがある<br></a>
-    <button type="button" onclick="yes6()">はい</button> or <button type="button" onclick="no6()">いいえ</button>
+    <button type="button" onclick="Hyes6()">凄くそう思う</button> <button type="button" onclick="Lyes6()">そう思う　　</button>
+    <button type="button" onclick="Lno6()">そう思わない</button> <button type="button" onclick="Hno6()">全く思わない</button>
     
     <p id="result1">null</p>
     <p id="result2">null</p>
@@ -41,24 +47,40 @@ let count4 = 0;
 let count5 = 0;
 let count6 = 0;
 
+let w = 4;
+let x = 3;
+let y = 2;
+let z = 1;
 
-function yes1() { count1 = 1; document.getElementById("result1").textContent = count1; }
-function no1() { count1 = 0; document.getElementById("result1").textContent = count1; }
+function Hyes1() { count1 = w; document.getElementById("result1").textContent = count1; }
+function Lyes1() { count1 = x; document.getElementById("result1").textContent = count1; }
+function Lno1()  { count1 = y; document.getElementById("result1").textContent = count1; }
+function Hno1()  { count1 = z; document.getElementById("result1").textContent = count1; }
 
-function yes2() { count2 = 1; document.getElementById("result2").textContent = count2; }
-function no2() { count2 = 0; document.getElementById("result2").textContent = count2; }
+function Hyes2() { count2 = w; document.getElementById("result2").textContent = count2; }
+function Lyes2() { count2 = x; document.getElementById("result2").textContent = count2; }
+function Lno2()  { count2 = y; document.getElementById("result2").textContent = count2; }
+function Hno2()  { count2 = z; document.getElementById("result2").textContent = count2; }
 
-function yes3() { count3 = 1; document.getElementById("result3").textContent = count3; }
-function no3() { count3 = 0; document.getElementById("result3").textContent = count3; }
+function Hyes3() { count3 = w; document.getElementById("result3").textContent = count3; }
+function Lyes3() { count3 = x; document.getElementById("result3").textContent = count3; }
+function Lno3()  { count3 = y; document.getElementById("result3").textContent = count3; }
+function Hno3()  { count3 = z; document.getElementById("result3").textContent = count3; }
 
-function yes4() { count4 = 1; document.getElementById("result4").textContent = count4; }
-function no4() { count4 = 0; document.getElementById("result4").textContent = count4; }
+function Hyes4() { count4 = w; document.getElementById("result4").textContent = count4; }
+function Lyes4() { count4 = x; document.getElementById("result4").textContent = count4; }
+function Lno4()  { count4 = y; document.getElementById("result4").textContent = count4; }
+function Hno4()  { count4 = z; document.getElementById("result4").textContent = count4; }
 
-function yes5() { count5 = 1; document.getElementById("result5").textContent = count5; }
-function no5() { count5 = 0; document.getElementById("result5").textContent = count5; }
+function Hyes5() { count5 = w; document.getElementById("result5").textContent = count5; }
+function Lyes5() { count5 = x; document.getElementById("result5").textContent = count5; }
+function Lno5()  { count5 = y; document.getElementById("result5").textContent = count5; }
+function Hno5()  { count5 = z; document.getElementById("result5").textContent = count5; }
 
-function yes6() { count6 = 1; document.getElementById("result6").textContent = count6; }
-function no6() { count6 = 0; document.getElementById("result6").textContent = count6; }
+function Hyes6() { count6 = w; document.getElementById("result6").textContent = count6; }
+function Lyes6() { count6 = x; document.getElementById("result6").textContent = count6; }
+function Lno6()  { count6 = y; document.getElementById("result6").textContent = count6; }
+function Hno6()  { count6 = z; document.getElementById("result6").textContent = count6; }
 </script>
 </body>
 </html>
