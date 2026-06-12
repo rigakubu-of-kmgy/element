@@ -68,7 +68,7 @@ const data = [
     [2, 1, 4, 1, 2, 'Al', '13', 'アルミニウム', 'アルミニウムの説明'],
     [2, 2, 5, 1, 5, 'P', '15', 'リン', 'リンの説明'],
 
-    [3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
+    //[3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
     [1, 2, 4, 2, 1, 'Ca', '20', 'カルシウム', 'カルシウムの説明'],
     [1, 1, 5, 4, 2, 'Fe', '26', '鉄', '鉄の説明'],
     [1, 1, 1, 1, 4, 'Cu', '29', '銅', '銅の説明'],
@@ -110,26 +110,33 @@ function Lno5()  { count5 = y; document.getElementById("result5").textContent = 
 function Hno5()  { count5 = z; document.getElementById("result5").textContent = count5; }
 
 function sindan() { 
-    let sum = 0;
-    let sums = [];
-    for (let dt of data) {
-        sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2 + (dt[3] - count4)**2 + (dt[4] - count5)**2
-        sums.push(sum)
-    };
-    // document.getElementById("cache1").textContent = `${count1}, ${count2}, ${count3}, ${count4}, ${count5}`;
-    // document.getElementById("cache2").textContent = sums;
-
-    const getMin = (a, b) => Math.min(a, b);
-    const min = sums.reduce(getMin);
-    let ans = 0
-
-    for (let i = 0; i < 16; i++) {
-        if ( sums[i] === min ) {
-            ans = i
-        }
+    if (count1 === count2 && count2 === count3 && count3 === count4 && count4 === count5 && count5 === 3) {
+        //[3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
+        document.getElementById("cache").textContent = `原子番号97, 元素記号Bk, バークリウム`;
+        document.getElementById("cache0").textContent = `バークリウムの説明`;
     }
-    document.getElementById("cache").textContent = `原子番号${data[ans][6]}, 元素記号${data[ans][5]}, ${data[ans][7]}`;
-    document.getElementById("cache0").textContent = `${data[ans][8]}`;
+    else {
+        let sum = 0;
+        let sums = [];
+        for (let dt of data) {
+            sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2 + (dt[3] - count4)**2 + (dt[4] - count5)**2
+            sums.push(sum)
+        };
+        // document.getElementById("cache1").textContent = `${count1}, ${count2}, ${count3}, ${count4}, ${count5}`;
+        // document.getElementById("cache2").textContent = sums;
+
+        const getMin = (a, b) => Math.min(a, b);
+        const min = sums.reduce(getMin);
+        let ans = 0
+
+        for (let i = 0; i < 15; i++) {
+            if ( sums[i] === min ) {
+                ans = i
+            }
+        }
+        document.getElementById("cache").textContent = `原子番号${data[ans][6]}, 元素記号${data[ans][5]}, ${data[ans][7]}`;
+        document.getElementById("cache0").textContent = `${data[ans][8]}`;
+    }
 }
 
 </script>
