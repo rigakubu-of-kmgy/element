@@ -10,7 +10,7 @@
 <body>
     <h1>元素診断</h1>
     <h3>貴方によく似た元素を診断します</h3>
-    <a>Ver : 2.1.0<br><br></a>
+    <a>Ver : 2.2.0<br><br></a>
     <a>Q1. 気分屋だ(三態)<br></a>
     <button type="button" onclick="Hyes1()">凄くそう思う</button> <button type="button" onclick="Lyes1()">そう思う　　</button>
     <button type="button" onclick="idk1()">わからない　</button>
@@ -36,13 +36,20 @@
     <button type="button" onclick="idk5()">わからない　</button>
     <button type="button" onclick="Lno5()">そう思わない</button> <button type="button" onclick="Hno5()">全く思わない</button>
     
+    <a><br><br>Q6. 見た目には気を使っている(綺麗か)<br></a>
+    <button type="button" onclick="Hyes6()">凄くそう思う</button> <button type="button" onclick="Lyes6()">そう思う　　</button>
+    <button type="button" onclick="idk6()">わからない　</button>
+    <button type="button" onclick="Lno6()">そう思わない</button> <button type="button" onclick="Hno6()">全く思わない</button>
+
     <br><br>
     <button type="button" onclick="sindan()">診断</button>
 
     <p id="cache"></p>
     <p id="cache0"></p>
-    <!-- <p id="cache1">null</p>
-    <p id="cache2">null</p> -->
+    <p>----------------console----------------</p>
+    <p id="cache1">null</p>
+    <p id="cache2">null</p>
+    <!-- <p id="cache3">null</p> -->
 
 <script>
 let count1 = 0;
@@ -50,33 +57,40 @@ let count2 = 0;
 let count3 = 0;
 let count4 = 0;
 let count5 = 0;
+let count6 = 0;
 
-let v = 5;
-let w = 4;
-let x = 3;
+let v = 4;
+let w = 3;
+let x = 2.5;
 let y = 2;
 let z = 1;
 
+const hy = 4;
+const ly = 3;
+const ln = 2;
+const hn = 1;
+
+
 const data = [
-    [5, 5, 5, 1, 4, 'H', '1', '水素', '水素の説明'],
-    [1, 2, 2, 2, 5, 'C', '6', '炭素', '炭素の説明'],
-    [5, 5, 5, 1, 5, 'N', '7', '窒素', '窒素の説明'],
-    [5, 5, 4, 1, 5, 'O', '8', '酸素', '酸素の説明'],
+    [hy, hy, hy, hn, ly, ln, 'H', '1', '水素', '水素の説明'],
+    [hn, ln, ln, ln, hy, hy , 'C', '6', '炭素', '炭素の説明'],
+    [hy, hy, hy, hn, hy, ly, 'N', '7', '窒素', '窒素の説明'],
+    [hy, hy, ly, hn, hy, ln,  'O', '8', '酸素', '酸素の説明'],
 
-    [5, 5, 2, 2, 1, 'F', '9', 'フッ素', 'フッ素の説明'],
-    [2, 2, 2, 2, 1, 'Na', '11', 'ナトリウム', 'ナトリウムの説明'],
-    [2, 1, 4, 1, 2, 'Al', '13', 'アルミニウム', 'アルミニウムの説明'],
-    [2, 2, 5, 1, 5, 'P', '15', 'リン', 'リンの説明'],
+    [hy, hy, ln, ln, hn, hn, 'F', '9', 'フッ素', 'フッ素の説明'],
+    [ln, ln, ln, ln, hn, hn, 'Na', '11', 'ナトリウム', 'ナトリウムの説明'],
+    [ln, hn, ly, hn, ln, ly, 'Al', '13', 'アルミニウム', 'アルミニウムの説明'],
+    [ln, ln, hy, hn, hy, ly, 'P', '15', 'リン', 'リンの説明'],
 
-    //[3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
-    [1, 2, 4, 2, 1, 'Ca', '20', 'カルシウム', 'カルシウムの説明'],
-    [1, 1, 5, 4, 2, 'Fe', '26', '鉄', '鉄の説明'],
-    [1, 1, 1, 1, 4, 'Cu', '29', '銅', '銅の説明'],
+    [hn, ln, ly, ln, hn, hn, 'Ca', '20', 'カルシウム', 'カルシウムの説明'],
+    [hn, hn, hy, ly, ln, ln, 'Fe', '26', '鉄', '鉄の説明'],
+    [hn, hn, hn, hn, ly, ly, 'Cu', '29', '銅', '銅の説明'],
+    [hn, ln, ln, ly, ly, ly, 'Ag', '47', '銀', '銀の説明'],
 
-    [1, 2, 2, 4, 4, 'Ag', '47', '銀', '銀の説明'],
-    [1, 1, 1, 4, 4, 'Pt', '78', '白金', '白金の説明'],
-    [1, 4, 1, 5, 4, 'Au', '79', '金', '金の説明'],
-    [4, 4, 1, 2, 4, 'Hg', '80', '水銀', '水銀の説明'],
+    [hn, hn, hn, ly, ly, hy, 'Pt', '78', '白金', '白金の説明'],
+    [hn, ly, hn, hy, ly, hy, 'Au', '79', '金', '金の説明'],
+    [ly, ly, hn, ln, ly, ly, 'Hg', '80', '水銀', '水銀の説明'],
+    [ln, hy, hy, hy, hn, hy, 'Bi', '83', 'ビスマス', 'ビスマスの説明']
 ];
 
 function Hyes1() { count1 = v; document.getElementById("result1").textContent = count1; }
@@ -109,8 +123,26 @@ function idk5()  { count5 = x; document.getElementById("result5").textContent = 
 function Lno5()  { count5 = y; document.getElementById("result5").textContent = count5; }
 function Hno5()  { count5 = z; document.getElementById("result5").textContent = count5; }
 
+function Hyes6() { count6 = v; document.getElementById("result6").textContent = count6; }
+function Lyes6() { count6 = w; document.getElementById("result6").textContent = count6; }
+function idk6()  { count6 = x; document.getElementById("result6").textContent = count6; }
+function Lno6()  { count6 = y; document.getElementById("result6").textContent = count6; }
+function Hno6()  { count6 = z; document.getElementById("result6").textContent = count6; }
+
+function mergeAlternating(arr1, arr2) {
+    const result = [];
+    const maxLength = Math.max(arr1.length, arr2.length);
+
+    for (let i = 0; i < maxLength; i++) {
+        if (i < arr1.length) result.push(arr1[i]);
+        if (i < arr2.length) result.push(arr2[i]);
+    }
+
+    return result;
+}
+
 function sindan() { 
-    if (count1 === count2 && count2 === count3 && count3 === count4 && count4 === count5 && count5 === 3) {
+    if (count1 === count2 && count2 === count3 && count3 === count4 && count4 === count5 && count5 === count6 && count6 === 2.5) {
         //[3, 3, 3, 3, 3, 'Bk', '97', 'バークリウム', 'バークリウムの説明'],
         document.getElementById("cache").textContent = `原子番号97, 元素記号Bk, バークリウム`;
         document.getElementById("cache0").textContent = `バークリウムの説明`;
@@ -118,24 +150,33 @@ function sindan() {
     else {
         let sum = 0;
         let sums = [];
+        //debug
+        let ele = [];
+        let sumc = [];
+
         for (let dt of data) {
-            sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2 + (dt[3] - count4)**2 + (dt[4] - count5)**2
-            sums.push(sum)
+            sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2 + (dt[3] - count4)**2 + (dt[4] - count5)**2 + (dt[5] - count6)**2;
+            sums.push(sum);
+            // debug            
+            ele.push(dt[6])
+            sumc.push(`${sum}     `)
+            
         };
-        // document.getElementById("cache1").textContent = `${count1}, ${count2}, ${count3}, ${count4}, ${count5}`;
-        // document.getElementById("cache2").textContent = sums;
+        document.getElementById("cache1").textContent = `get: ${count1}, ${count2}, ${count3}, ${count4}, ${count5}, ${count6}`;
+        document.getElementById("cache2").textContent = mergeAlternating(ele, sumc);
+        // document.getElementById("cache3").textContent = ele;
 
         const getMin = (a, b) => Math.min(a, b);
         const min = sums.reduce(getMin);
         let ans = 0
 
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 16; i++) {
             if ( sums[i] === min ) {
                 ans = i
             }
         }
-        document.getElementById("cache").textContent = `原子番号${data[ans][6]}, 元素記号${data[ans][5]}, ${data[ans][7]}`;
-        document.getElementById("cache0").textContent = `${data[ans][8]}`;
+        document.getElementById("cache").textContent = `原子番号${data[ans][7]}, 元素記号${data[ans][6]}, ${data[ans][8]}`;
+        document.getElementById("cache0").textContent = `${data[ans][9]}`;
     }
 }
 
