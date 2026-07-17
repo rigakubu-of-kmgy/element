@@ -44,7 +44,7 @@
 <body>
     <h1>元素診断</h1>
     <h3>貴方によく似た元素を診断します</h3>
-    <p>Ver : 4.0.0 </p>
+    <p>Ver : 4.1.0 </p>
 
     <div id="questions"></div>
 
@@ -68,13 +68,14 @@ effectVideo.src = EFFECT_VIDEO_SRC;
 
 const EFFECT_SCALE = 1;
 const EFFECT_BASE_WIDTH = 242;
-const EFFECT_OFFSET_X = -4;
-const EFFECT_OFFSET_Y = 2;
+
+const EFFECT_OFFSET_X_RATIO = -0.0165;
+const EFFECT_OFFSET_Y_RATIO = 0.05;
 
 function playEffectOnButton(btn) {
     const rect = btn.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2 + EFFECT_OFFSET_X;
-    const cy = rect.top + rect.height / 2 + EFFECT_OFFSET_Y;
+    const cx = rect.left + rect.width / 2 + rect.width * EFFECT_OFFSET_X_RATIO;
+    const cy = rect.top + rect.height / 2 + rect.height * EFFECT_OFFSET_Y_RATIO;
 
     const w = Math.max(rect.width, EFFECT_BASE_WIDTH) * EFFECT_SCALE;
 
