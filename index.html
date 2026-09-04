@@ -139,7 +139,7 @@
 <body>
     <h1>元素診断</h1>
     <h3>貴方によく似た元素を診断します</h3>
-    <p>Ver : 8.0.0 </p>
+    <p>Ver : 8.1.0 </p>
 
     <div id="questions"></div>
 
@@ -147,9 +147,6 @@
 
     <p id="cache"></p>
     <p id="cache0"></p>
-    <p>----------------console----------------</p>
-    <p id="cache1">null</p>
-    <p id="cache2">null</p>
 
 <script>
 
@@ -223,16 +220,6 @@ const data = [
     [ln, hy, hy, hy, hn, hy, 'Bi', '83', 'ビスマス', '結晶が虹色に輝く、意外性のある元素。見た目のインパクトと個性が光る唯一無二の存在。',0]
 ];
 
-function mergeAlternating(arr1, arr2) {
-    const result = [];
-    const maxLength = Math.max(arr1.length, arr2.length);
-    for (let i = 0; i < maxLength; i++) {
-        if (i < arr1.length) result.push(arr1[i]);
-        if (i < arr2.length) result.push(arr2[i]);
-    }
-    return result;
-}
-
 function sindan() {
     if (counts.includes(null)) {
         document.getElementById("cache").textContent = "すべての質問に答えてください";
@@ -241,27 +228,19 @@ function sindan() {
     }
 
     if (counts.every(c => c === x)) {
-    document.getElementById("cache").textContent = `原子番号97, 元素記号Bk, バークリウム`;
-    document.getElementById("cache0").textContent = `人工的にしか作れない超希少元素。誰とも被らない、圧倒的にレアな存在。`;
+        document.getElementById("cache").textContent = `原子番号97, 元素記号Bk, バークリウム`;
+        document.getElementById("cache0").textContent = `人工的にしか作れない超希少元素。誰とも被らない、圧倒的にレアな存在。`;
         return;
     }
 
     let sums = [];
-    let ele = [];
-    let sumc = [];
 
     for (let dt of data) {
-        let sum = 0;
-        sum = (dt[0] - count1)**2 + (dt[1] - count2)**2 + (dt[2] - count3)**2
-            + (dt[3] - count4)**2 + (dt[4] - count5)**2 + (dt[5] - count6)**2
-            + dt[10];
+        let sum = (dt[0] - counts[0])**2 + (dt[1] - counts[1])**2 + (dt[2] - counts[2])**2
+                + (dt[3] - counts[3])**2 + (dt[4] - counts[4])**2 + (dt[5] - counts[5])**2
+                + dt[10];
         sums.push(sum);
-        ele.push(dt[6]);
-        sumc.push(`${sum}     `);
     }
-
-    document.getElementById("cache1").textContent = `get: ${counts.join(', ')}`;
-    document.getElementById("cache2").textContent = mergeAlternating(ele, sumc);
 
     const min = Math.min(...sums);
     const ans = sums.indexOf(min);
